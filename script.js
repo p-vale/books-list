@@ -59,22 +59,34 @@ function newTable() {
     makeTable(bookList, myLibrary)
 }
 
-function Book(title, author, year, read) {
-    this.title = title
-    this.author = author
-    this.year = year
-    this.read = read
+//CONSTRUCTOR
+// function Book(title, author, year, read, id) {
+//     this.title = title
+//     this.author = author
+//     this.year = year
+//     this.read = read
+//     this.id = id
+// }
+
+//CLASS
+// class Book {
+//     constructor(title, author, year, read, id) {
+//             this.title = title
+//             this.author = author
+//             this.year = year
+//             this.read = read
+//             this.id = id
+//         }
+    
+// }
+
+//FACTORY
+const Book = (title, author, year, read, id) => {
+    return {title, author, year, read, id}
 }
 
 function addBook() {
-    let book = {
-        title: title.value,
-        author: author.value,
-        year: year.value.toString(),
-        read: read.checked,
-        id: newId
-    }
-
+    let book = /*new*/ Book(title.value, author.value, year.value.toString(), read.checked, newId)
     newId++
     myLibrary.push(book)
     newTable()
