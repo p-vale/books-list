@@ -16,15 +16,18 @@ body {
 }
 
 h1 {
-    color: #ee695e;;
-    font-family: 'Pompiere', sans-serif;
-    margin-bottom: 30px;
+    color: #2cb8ab;
+    font-family: 'Palanquin', sans-serif;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 20px;
 }
 
 table {
     table-layout: fixed;
     border-collapse: collapse;
     font-family: 'Palanquin', sans-serif;
+    letter-spacing: 0.05em;
     width: 100%;
 }
 
@@ -35,9 +38,10 @@ table {
 th {
     padding: 10px;
     text-align: left;
-    background-color: #ee695e;
+    background-color: #de8b68;
     color: white;
     font-weight: 500;
+    text-transform: uppercase;
     font-size: 18px;
 }
 
@@ -52,7 +56,7 @@ tbody>*>* {
 }
 
 tr:nth-child(even) {
-    background-color: #eeeeee;
+    background-color: #eeeae2;
 }
 
 .tableCheck {
@@ -61,7 +65,7 @@ tr:nth-child(even) {
     background-color: white;
     border-radius: 50%;
     vertical-align: middle;
-    border: 1px solid #e4e4e4;
+    border: 1px solid #e4bfaf;
     appearance: none;
     -webkit-appearance: none;
     outline: none;
@@ -69,8 +73,8 @@ tr:nth-child(even) {
 }
 
 .tableCheck:checked {
-    background-color: #ee695e;
-    border-color: #ee695e;
+    background-color: #de8b68;
+    border-color: #de8b68;
 }
 
 .binCell {
@@ -93,8 +97,7 @@ tr:nth-child(even) {
 
 /*INPUTS*/
 #inputs {
-    box-shadow: 0px 0px 8px #eeeeee;
-    border-left: solid 1px #e4e4e4;
+    box-shadow: 0px 0px 8px #ecdad2;
     padding: 5%;
     position: relative;
 }
@@ -108,17 +111,19 @@ tr:nth-child(even) {
     height: 40px;
     border-style: solid;
     border-radius: 5px;
-    border-width: 2px;
-    border-color: #ee695e;
+    border-width: 1px;
+    border-color: #de8b68;
     padding-left: 15px;
     font-family: 'Palanquin', sans-serif;
+    letter-spacing: 0.05em;
     font-weight: 200;
 }
 
 label {
     display: block;
-    color: #ee695e;
+    color: #de8b68;
     text-transform: uppercase;
+    letter-spacing: 0.05em;
     font-size: 14px;
     font-weight: 500;
     margin-left: 15px;
@@ -133,7 +138,7 @@ span {
 
 input:focus {
     outline: none;
-    box-shadow: 0px 0px 4px #f88379;
+    box-shadow: 0px 0px 4px #de8b68;
 }
 
 .wrapper {
@@ -147,8 +152,8 @@ input:focus {
     height: 30px;
     border-radius: 15px;
     border-style: solid;
-    border-width: 2px;
-    border-color: #ee695e;
+    border-width: 1px;
+    border-color: #de8b68;
     overflow: hidden;
     display: flex;
     align-items: stretch;
@@ -156,7 +161,7 @@ input:focus {
 }
 
 #unread {
-    background-color: #ee695e;
+    background-color: #de8b68;
     flex: 1;
 }
 
@@ -183,15 +188,16 @@ input:focus {
 
 button {
     cursor: pointer;
-    width: 154px;
+    width: 100%;
     height: 34px;
     border: none;
-    border-radius: 5px;
-    background-color: #ee695e;
+    border-radius: 15px;
+    background-color: #2cb8ab;
     color: white;
     font-family: 'Palanquin', sans-serif;
     text-transform: uppercase;
-    font-size: 14px;
+    letter-spacing: 0.05em;
+    font-size: 16px;
     font-weight: 500;
     float: right;
 }

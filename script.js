@@ -76,15 +76,21 @@ function addBook() {
 read.addEventListener('click', () => {
     if (read.checked) {
         divRead.style.color = 'white'
-        divRead.style.backgroundColor = '#ee695e'
+        divRead.style.backgroundColor = '#de8b68'
         divUnread.style.backgroundColor = 'white'
     } else {
-        divRead.style.color = '#ee695e'
+        divRead.style.color = '#de8b68'
         divRead.style.backgroundColor = 'white'
-        divUnread.style.backgroundColor = '#ee695e'
+        divUnread.style.backgroundColor = '#de8b68'
     }
 })
 
 add.addEventListener('click', () => {
+    if (title.value == '') {
+        title.placeholder = 'TITLE REQUIRED'
+        return
+    } else if (title.value && title.placeholder == 'TITLE REQUIRED') {
+        title.placeholder = 'eg. The Picture of Dorian Gray'
+    }
     addBook();
 })
