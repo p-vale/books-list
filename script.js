@@ -14,11 +14,11 @@ function toggleRead(objIndex) {
     myLibrary[objIndex].read = !myLibrary[objIndex].read
 }
 
-function removeBook(objId) {
+function removeBook (objId) {
     myLibrary = myLibrary.filter(obj => obj.id !== objId)
 }
 
-function makeTable(table, data) {
+function makeTable (table, data) {
     for (let element of data) {
         let objectId = element.id
         let objectIndex = myLibrary.indexOf(element)
@@ -26,9 +26,9 @@ function makeTable(table, data) {
 
         for (key in element) {
             let cell = row.insertCell()
-            if (typeof(element[key]) === 'number') { //BIN
+            if (typeof(element[key]) === 'number') {
                 cell. className = 'binCell'
-                let image = document.createElement("img")
+                let image = document.createElement('img')
                 image.setAttribute('src', './bin.png')
                 image.className = 'bin'
                 image.addEventListener('click', () => {
@@ -36,16 +36,16 @@ function makeTable(table, data) {
                     newTable()
                 })
                 cell.appendChild(image)
-            } else if (typeof(element[key]) === 'boolean') { //READ
-                let x = document.createElement("input")
-                x.setAttribute("type", "checkbox")
-                if (element[key]) x.setAttribute("checked", true)
+            } else if (typeof(element[key]) === 'boolean') {
+                let x = document.createElement('input')
+                x.setAttribute('type', 'checkbox')
+                if (element[key]) x.setAttribute('checked', true)
                 x.className = 'tableCheck'
                 x.addEventListener('click', () => {
                     toggleRead(objectIndex)
                 })
                 cell.appendChild(x)
-            } else { //TITLE & AUTHOR
+            } else {
                 let text = document.createTextNode(element[key])
                 cell.appendChild(text)
             }
@@ -86,11 +86,27 @@ read.addEventListener('click', () => {
 })
 
 add.addEventListener('click', () => {
-    if (title.value == '') {
-        title.placeholder = 'TITLE REQUIRED'
-        return
-    } else if (title.value && title.placeholder == 'TITLE REQUIRED') {
-        title.placeholder = 'eg. The Picture of Dorian Gray'
-    }
-    addBook();
+  const titleNotOk = title.validity.valueMissing
+  const authorNotOk = author.validity.valueMissing
+  const dateFuture = year.validity.rangeOverflow
+  const dateOld = year.validity.rangeUnderflow
+
+  if (titleNotOk) {
+    title.setCustomValidity('The title is required');
+    title.reportValidity();
+  } else if (authorNotOk) {
+    author.setCustomValidity('The author is required');
+    author.reportValidity();
+  } else if (dateFuture) {
+    year.setCustomValidity('This book is from the future!?');
+    year.reportValidity();
+  } else if (dateOld) {
+    year.setCustomValidity('This book is older than writing itself!?');
+    year.reportValidity();
+  }
+
+  if (titleNotOk || authorNotOk || dateFuture || dateOld) {
+      return
+  }
+  addBook();
 })

@@ -130,6 +130,13 @@ label {
     margin-top: -55px;
 }
 
+.required {
+  text-align: right;
+  color: #a89d86;
+  font-size: 11px;
+  margin-right: 5px;
+}
+
 span {
     background-color: white;
     padding-left: 5px;
