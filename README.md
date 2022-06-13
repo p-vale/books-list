@@ -1,3 +1,3 @@
 # books-list
-Table of book titles and info from user input.
-Js input validation.
+Responsive table of book titles with sticky header and data from user input.
+

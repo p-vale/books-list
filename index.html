@@ -11,44 +11,48 @@
     <link rel='stylesheet' href='./style.css'>
 </head>
 <body>
-  <div id='outputs'>
-    <h1>Book List</h1>
-    <table>
-      <tr>
-        <th class='thirty'>title</th>
-        <th class='thirty'>author</th>
-        <th>year</th>
-        <th>read</th>
-        <th class='binCell'>del</th>
-      </tr>
-      <tbody id='bookList'>
-      </tbody>
-    </table>
-  </div>
-  <div id='inputs'>
-    <div class='box'>
-      <p class='required'>required</p>
-      <input name='title' id='title' class='info' type='text' placeholder='eg. The Picture of Dorian Gray' required>
-      <label for='title'><span>title</span></label>
+  <main>
+    <div id='outputs'>
+      <h1>Book List</h1>
+      <table>
+        <tr>
+          <th class='thirty'>title</th>
+          <th class='thirty'>author</th>
+          <th>year</th>
+          <th>read</th>
+          <th>del</th>
+        </tr>
+        <tbody id='bookList'>
+        </tbody>
+      </table>
     </div>
-    <div class='box'>
-      <p class='required'>required</p>
-      <input name='author' id='author' class='info' type='text' placeholder='eg. Oscar Wilde' required>
-      <label for='author'><span>author</span></label>
-    </div class='box'>
-    <div class='box'>
-      <input name='year' id='year' class='info' type='number' min='-2600' max='2022' step='1' placeholder='1890'>
-      <label for='year'><span>year of publication</span></label>
-    </div>
-    <div class='wrapper'>
-      <div class='toggle'>
-        <div id='unread'></div>
-        <label for='read-status' id='read'>READ</label>
+    <div id='inputs'>
+      <div id='media-box'>
+        <div class='box'>
+          <p class='required'>required</p>
+          <input name='title' id='title' class='info' type='text' placeholder='eg. The Picture of Dorian Gray' required>
+          <label for='title'><span>title</span></label>
+        </div>
+        <div class='box'>
+          <p class='required'>required</p>
+          <input name='author' id='author' class='info' type='text' placeholder='eg. Oscar Wilde' required>
+          <label for='author'><span>author</span></label>
+        </div class='box'>
+        <div class='box'>
+          <input name='year' id='year' class='info' type='number' min='-2600' max='2022' step='1' placeholder='1890'>
+          <label for='year'><span>year of publication</span></label>
+        </div>
       </div>
-      <input name='read-status' id='isRead' class='switch' type="checkbox"></input>
+      <div class='wrapper'>
+        <div class='toggle'>
+          <div id='unread'></div>
+          <label for='read-status' id='read'>READ</label>
+        </div>
+        <input name='read-status' id='isRead' class='switch' type="checkbox"></input>
+      </div>
+      <button id='add'>add book</button>
     </div>
-    <button id='add'>add book</button>
-  </div>
+  </main>
   <script src='./script.js'></script>
 </body>
 </html>
