@@ -1,10 +1,13 @@
+import './style.css'
+import bin from "./bin.png"
+
 let bookList = document.getElementById('bookList')
 let title = document.getElementById('title')
 let author = document.getElementById('author')
 let year = document.getElementById('year')
-let read = document.getElementById('isRead')
-let divRead = document.getElementById('read')
-let divUnread = document.getElementById('unread')
+let readCheck = document.getElementById('read-check')
+let readLabel = document.getElementById('read-label')
+let readNot = document.getElementById('read-not')
 let add = document.getElementById('add')
 
 let myLibrary = []
@@ -24,12 +27,12 @@ function makeTable (table, data) {
         let objectIndex = myLibrary.indexOf(element)
         let row = table.insertRow()
 
-        for (key in element) {
+        for (let key in element) {
             let cell = row.insertCell()
             if (typeof(element[key]) === 'number') {
                 cell. className = 'binCell'
                 let image = document.createElement('img')
-                image.setAttribute('src', './bin.png')
+                image.setAttribute('src', bin)
                 image.className = 'bin'
                 image.addEventListener('click', () => {
                     removeBook(objectId)
@@ -64,7 +67,7 @@ function addBook() {
         title: title.value,
         author: author.value,
         year: year.value.toString(),
-        read: read.checked,
+        read: readCheck.checked,
         id: newId
     }
 
@@ -73,15 +76,15 @@ function addBook() {
     newTable()
 }
 
-read.addEventListener('click', () => {
-    if (read.checked) {
-        divRead.style.color = 'white'
-        divRead.style.backgroundColor = '#de8b68'
-        divUnread.style.backgroundColor = 'white'
+readCheck.addEventListener('click', () => {
+    if (readCheck.checked) {
+        readLabel.style.color = 'white'
+        readLabel.style.backgroundColor = '#de8b68'
+        readNot.style.backgroundColor = 'white'
     } else {
-        divRead.style.color = '#de8b68'
-        divRead.style.backgroundColor = 'white'
-        divUnread.style.backgroundColor = '#de8b68'
+        readLabel.style.color = '#de8b68'
+        readLabel.style.backgroundColor = 'white'
+        readNot.style.backgroundColor = '#de8b68'
     }
 })
 

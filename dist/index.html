@@ -5,10 +5,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Books List</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Palanquin:wght@200;300;500;700" rel="stylesheet">
-    <link rel='stylesheet' href='./style.css'>
 </head>
 <body>
   <main>
@@ -44,15 +40,15 @@
         </div>
       </div>
       <div class='wrapper'>
-        <div class='toggle'>
-          <div id='unread'></div>
-          <label for='read-status' id='read'>READ</label>
+        <div class='toggle' id='read-toggle'>
+          <div id='read-not'></div>
+          <label for='read-status' id='read-label'>READ</label>
         </div>
-        <input name='read-status' id='isRead' class='switch' type="checkbox"></input>
+        <input name='read-status' id='read-check' class='switch' type="checkbox"></input>
       </div>
       <button id='add'>add book</button>
     </div>
   </main>
-  <script src='./script.js'></script>
 </body>
+<script src="./bundle.js" defer></script>
 </html>

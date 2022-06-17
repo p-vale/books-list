@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Palanquin:wght@200;300;500;700&display=swap');
+
 * {
   margin: 0px;
   padding: 0px;
@@ -179,12 +181,12 @@ input:focus {
   float: right;
 }
 
-#unread {
+#read-not {
   background-color: #de8b68;
   flex: 1;
 }
 
-#read {
+#read-label {
   margin: 0;
   flex: 1;
   text-align: center;
@@ -258,6 +260,11 @@ button {
 
   .toggle {
     float: left;
+  }
+
+  .switch {
+    left: 0;
+    right: auto;
   }
 
   #outputs {
