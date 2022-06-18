@@ -1,5 +1,6 @@
-import './style.css'
 import bin from "./bin.png"
+import login from "./login"
+import './style.css'
 
 let bookList = document.getElementById('bookList')
 let title = document.getElementById('title')
@@ -7,8 +8,7 @@ let author = document.getElementById('author')
 let year = document.getElementById('year')
 let readCheck = document.getElementById('read-check')
 let readLabel = document.getElementById('read-label')
-let readIndicator = document.getElementById('read-indicator')
-let add = document.getElementById('add')
+let add = document.getElementById('add-btn')
 
 let myLibrary = []
 let newId = 0
@@ -77,13 +77,9 @@ function addBook() {
 }
 
 readCheck.addEventListener('click', () => {
-    if (readCheck.checked) {
-      readLabel.style.color = 'white'
-      //readIndicator.style.left = '75px'
-    } else {
+    (readCheck.checked) ? 
+      readLabel.style.color = 'white' : 
       readLabel.style.color = '#de8b68'
-      //readIndicator.style.left = '0px'
-    }
 })
 
 add.addEventListener('click', () => {
@@ -111,3 +107,5 @@ add.addEventListener('click', () => {
   }
   addBook();
 })
+
+document.body.appendChild(login())
