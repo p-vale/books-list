@@ -7,7 +7,7 @@ let author = document.getElementById('author')
 let year = document.getElementById('year')
 let readCheck = document.getElementById('read-check')
 let readLabel = document.getElementById('read-label')
-let readNot = document.getElementById('read-not')
+let readIndicator = document.getElementById('read-indicator')
 let add = document.getElementById('add')
 
 let myLibrary = []
@@ -78,13 +78,11 @@ function addBook() {
 
 readCheck.addEventListener('click', () => {
     if (readCheck.checked) {
-        readLabel.style.color = 'white'
-        readLabel.style.backgroundColor = '#de8b68'
-        readNot.style.backgroundColor = 'white'
+      readLabel.style.color = 'white'
+      //readIndicator.style.left = '75px'
     } else {
-        readLabel.style.color = '#de8b68'
-        readLabel.style.backgroundColor = 'white'
-        readNot.style.backgroundColor = '#de8b68'
+      readLabel.style.color = '#de8b68'
+      //readIndicator.style.left = '0px'
     }
 })
 

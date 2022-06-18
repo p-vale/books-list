@@ -162,13 +162,9 @@ input:focus {
   box-shadow: 0px 0px 4px #de8b68;
 }
 
-.wrapper {
+#read-toggle {
+  isolation: isolate;
   position: relative;
-  height: 34px;
-  margin-bottom: 50px;
-}
-
-.toggle {
   width: 150px;
   height: 30px;
   border-radius: 15px;
@@ -176,35 +172,57 @@ input:focus {
   border-width: 1px;
   border-color: #de8b68;
   overflow: hidden;
-  display: flex;
-  align-items: stretch;
   float: right;
-}
-
-#read-not {
-  background-color: #de8b68;
-  flex: 1;
+  margin-bottom: 50px;
 }
 
 #read-label {
-  margin: 0;
-  flex: 1;
-  text-align: center;
+  margin: 0; /* remove label margin */
+  width: 75px;
+  height: 30px;
   line-height: 30px;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 2;
+  text-align: center;
+  color: #de8b68;
 }
 
-.switch {
+#read-check {
   width: 150px;
-  height: 34px;
+  height: 30px;
   cursor: pointer;
   opacity: 0%;
   position: absolute;
   right: 0;
   top: 0;
+  z-index: 3;
 }
 
-.switch:focus {
+#read-check:focus {
   box-shadow: none;
+}
+
+#read-indicator {
+  background-color: #de8b68;
+  width: 80px;
+  height: 100%;
+  border-radius: 14px;
+  z-index: 1;
+  margin-left: 75px; /* make toggle easy-peasy */
+}
+
+#read-check:checked ~ #read-indicator {
+  transform: translateX(0px);
+  -webkit-transform: translateX(0px);
+  transition: transform 300ms linear;
+}
+
+#read-check:not(:checked) ~ #read-indicator {
+  transform: translateX(-75px);
+  -webkit-transform: translateX(-75px);
+  transition: transform 300ms linear;
 }
 
 button {
@@ -221,6 +239,14 @@ button {
   font-size: 16px;
   font-weight: 500;
   float: right;
+  transition-duration: 0.5s;
+  transition-timing-function: ease-out;
+  transition-delay: 0.05s;
+}
+
+button:hover {
+  background-color: #bff5f0;
+  color: #2cb8ab;
 }
 
 @media (max-width: 1200px) {
@@ -254,15 +280,12 @@ button {
   .box {
     margin-bottom: 55px;
   }
-  .wrapper {
-    margin-bottom: 20px;
-  }
 
-  .toggle {
+  #read-toggle {
     float: left;
   }
 
-  .switch {
+  #read-check {
     left: 0;
     right: auto;
   }
