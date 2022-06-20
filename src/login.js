@@ -1,3 +1,9 @@
+import { signOut } from 'firebase/auth'
+import {
+  signIn,
+  signOutUser
+} from './app'
+
 function login () {
   const menu = document.createElement('div')
   menu.id = 'menu'
@@ -5,7 +11,13 @@ function login () {
   enter.id = 'enter'
   enter.innerHTML = 'LOGIN'
   enter.addEventListener('click', () => {
-    (enter.innerHTML === 'LOGIN') ? enter.innerHTML = 'LOGOUT' : enter.innerHTML = 'LOGIN'
+    if (enter.innerHTML === 'LOGIN') {
+      enter.innerHTML = 'LOGOUT'
+      signIn()
+    } else {
+      enter.innerHTML = 'LOGIN'
+      signOutUser()
+    }
   })
   const opener = document.createElement('button')
   opener.id = 'opener'
