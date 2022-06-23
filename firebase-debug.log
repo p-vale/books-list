@@ -1,0 +1,29 @@
+[debug] [2022-06-23T15:38:54.538Z] ----------------------------------------------------------------------
+[debug] [2022-06-23T15:38:54.540Z] Command:       /home/valentina/.nvm/versions/node/v18.3.0/bin/node /home/valentina/.nvm/versions/node/v18.3.0/bin/firebase serve --only hosting
+[debug] [2022-06-23T15:38:54.540Z] CLI Version:   11.1.0
+[debug] [2022-06-23T15:38:54.540Z] Platform:      linux
+[debug] [2022-06-23T15:38:54.541Z] Node Version:  v18.3.0
+[debug] [2022-06-23T15:38:54.541Z] Time:          Thu Jun 23 2022 17:38:54 GMT+0200 (Central European Summer Time)
+[debug] [2022-06-23T15:38:54.541Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2022-06-23T15:38:54.607Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2022-06-23T15:38:54.607Z] > authorizing via signed-in user (pezzi.valente@gmail.com)
+[debug] [2022-06-23T15:38:54.607Z] [iam] checking project books-list-ec740 for permissions ["firebase.projects.get"]
+[debug] [2022-06-23T15:38:54.609Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/books-list-ec740:testIamPermissions [none]
+[debug] [2022-06-23T15:38:54.610Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/books-list-ec740:testIamPermissions {"permissions":["firebase.projects.get"]}
+[debug] [2022-06-23T15:38:55.924Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/books-list-ec740:testIamPermissions 200
+[debug] [2022-06-23T15:38:55.924Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/books-list-ec740:testIamPermissions {"permissions":["firebase.projects.get"]}
+[debug] [2022-06-23T15:38:55.926Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/books-list-ec740 [none]
+[debug] [2022-06-23T15:38:56.375Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/books-list-ec740 200
+[debug] [2022-06-23T15:38:56.375Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/books-list-ec740 {"projectId":"books-list-ec740","projectNumber":"583745297966","displayName":"books-list","name":"projects/books-list-ec740","resources":{"hostingSite":"books-list-ec740","storageBucket":"books-list-ec740.appspot.com","locationId":"europe-west2"},"state":"ACTIVE"}
+[debug] [2022-06-23T15:38:56.376Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/books-list-ec740/sites 
+[debug] [2022-06-23T15:38:57.766Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/books-list-ec740/sites 200
+[debug] [2022-06-23T15:38:57.766Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/books-list-ec740/sites {"sites":[{"name":"projects/books-list-ec740/sites/books-list-ec740","defaultUrl":"https://books-list-ec740.web.app","appId":"1:583745297966:web:54f739030db1bd213f49bf","type":"DEFAULT_SITE"}]}
+[debug] [2022-06-23T15:38:57.767Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/books-list-ec740/webApps/1:583745297966:web:54f739030db1bd213f49bf/config [none]
+[debug] [2022-06-23T15:38:58.653Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/books-list-ec740/webApps/1:583745297966:web:54f739030db1bd213f49bf/config 200
+[debug] [2022-06-23T15:38:58.653Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/books-list-ec740/webApps/1:583745297966:web:54f739030db1bd213f49bf/config {"projectId":"books-list-ec740","appId":"1:583745297966:web:54f739030db1bd213f49bf","storageBucket":"books-list-ec740.appspot.com","locationId":"europe-west2","apiKey":"AIzaSyDr133hOmQNjPQ256tv1N5azBwLgEnAXfA","authDomain":"books-list-ec740.firebaseapp.com","messagingSenderId":"583745297966"}
+[info] i  hosting: Serving hosting files from: dist {"metadata":{"emulator":{"name":"hosting"},"message":"Serving hosting files from: \u001b[1mdist\u001b[22m"}}
+[info] ✔  hosting: Local server: http://localhost:5000 {"metadata":{"emulator":{"name":"hosting"},"message":"Local server: \u001b[4m\u001b[1mhttp://localhost:5000\u001b[22m\u001b[24m"}}
+[info] i  hosting: 127.0.0.1 - - [23/Jun/2022:15:39:19 +0000] "GET / HTTP/1.1" 200 1723 "-" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.0.0 Safari/537.36" {"metadata":{"emulator":{"name":"hosting"},"message":"127.0.0.1 - - [23/Jun/2022:15:39:19 +0000] \"GET / HTTP/1.1\" 200 1723 \"-\" \"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.0.0 Safari/537.36\""}}
+[info] i  hosting: 127.0.0.1 - - [23/Jun/2022:15:40:09 +0000] "GET / HTTP/1.1" 200 1723 "-" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.0.0 Safari/537.36" {"metadata":{"emulator":{"name":"hosting"},"message":"127.0.0.1 - - [23/Jun/2022:15:40:09 +0000] \"GET / HTTP/1.1\" 200 1723 \"-\" \"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.0.0 Safari/537.36\""}}
+[info] i  hosting: 127.0.0.1 - - [23/Jun/2022:15:40:32 +0000] "GET / HTTP/1.1" 200 1723 "-" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.0.0 Safari/537.36" {"metadata":{"emulator":{"name":"hosting"},"message":"127.0.0.1 - - [23/Jun/2022:15:40:32 +0000] \"GET / HTTP/1.1\" 200 1723 \"-\" \"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.0.0 Safari/537.36\""}}

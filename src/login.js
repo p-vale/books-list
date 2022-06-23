@@ -1,4 +1,3 @@
-import { signOut } from 'firebase/auth'
 import {
   signIn,
   signOutUser
