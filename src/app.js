@@ -9,13 +9,9 @@ import {
   getFirestore,
   collection,
   addDoc,
-  query,
-  orderBy,
-  limit,
-  onSnapshot,
-  setDoc,
-  updateDoc,
   doc,
+  deleteDoc,
+  getDocs,
   serverTimestamp,
 } from 'firebase/firestore'
 
@@ -48,13 +44,16 @@ function getUserId() {
   }
 }
 
-function loadLibrary() {
-  const recentLibraryQuery = query(collection(getFirestore(), 'testercollection'), orderBy('timestamp'), limit(50));
-  onSnapshot(recentLibraryQuery, function(snapshot) {
-    snapshot.docChanges().forEach((change) => {
-      console.log(change.doc.data())
-    });
-  });
+async function loadLibrary() {
+  let library = []
+  let db = getFirestore();
+  let loadLibrary = await getDocs(collection(db, "testercollection"));
+  loadLibrary.forEach((doc) => {
+    let book = doc.data()
+    book.id = doc.id
+    library.push(book)
+  })
+  return library
 }
 
 async function saveTitle(obj) {
@@ -72,6 +71,10 @@ async function saveTitle(obj) {
   }
 }
 
+async function deleteTitle(id) {
+  await deleteDoc(doc(getFirestore(), 'testercollection', id))
+}
+
 // Initialize Firebase
 initializeApp(config);
 
@@ -80,5 +83,6 @@ export {
   signOutUser,
   getUserId,
   loadLibrary,
-  saveTitle
+  saveTitle,
+  deleteTitle
 }

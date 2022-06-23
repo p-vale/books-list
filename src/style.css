@@ -97,6 +97,12 @@ tr:nth-child(even) {
   border-color: #de8b68;
 }
 
+.cell-bin {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .bin {
   height: 25px;
   width: 25px;

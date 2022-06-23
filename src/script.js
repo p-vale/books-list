@@ -1,9 +1,13 @@
 import bin from "./bin.png"
 import login from "./login"
 import './style.css'
-import { getUserId, loadLibrary, saveTitle } from './app'
+import { 
+  getUserId, 
+  loadLibrary, 
+  saveTitle,
+  deleteTitle } from './app'
 
-let bookList = document.getElementById('bookList')
+let table = document.getElementById('bookList')
 let title = document.getElementById('title')
 let author = document.getElementById('author')
 let year = document.getElementById('year')
@@ -14,51 +18,57 @@ let add = document.getElementById('add-btn')
 // function toggleRead(objIndex) {
 //     myLibrary[objIndex].read = !myLibrary[objIndex].read
 // }
+async function makeTable () {
+  const data = await loadLibrary()
+  for (let element of data) {
+    let row = table.insertRow()
 
-// function removeBook (objId) {
-//     myLibrary = myLibrary.filter(obj => obj.id !== objId)
-// }
+    let titleCell = document.createTextNode(element.title)
+    row.insertCell().appendChild(titleCell)
 
-// function makeTable (table, data) {
-//     for (let element of data) {
-//         let objectId = element.id
-//         let objectIndex = myLibrary.indexOf(element)
-//         let row = table.insertRow()
+    let authorCell = document.createTextNode(element.author)
+    row.insertCell().appendChild(authorCell)
 
-//         for (let key in element) {
-//             let cell = row.insertCell()
-//             if (typeof(element[key]) === 'number') {
-//                 cell. className = 'binCell'
-//                 let image = document.createElement('img')
-//                 image.setAttribute('src', bin)
-//                 image.className = 'bin'
-//                 image.addEventListener('click', () => {
-//                     removeBook(objectId)
-//                     newTable()
-//                 })
-//                 cell.appendChild(image)
-//             } else if (typeof(element[key]) === 'boolean') {
-//                 let x = document.createElement('input')
-//                 x.setAttribute('type', 'checkbox')
-//                 if (element[key]) x.setAttribute('checked', true)
-//                 x.className = 'tableCheck'
-//                 x.addEventListener('click', () => {
-//                     toggleRead(objectIndex)
-//                 })
-//                 cell.appendChild(x)
-//             } else {
-//                 let text = document.createTextNode(element[key])
-//                 cell.appendChild(text)
-//             }
-//         }
-//     }
-// }
-// makeTable()
+    let yearCell = document.createTextNode(element.year)
+    row.insertCell().appendChild(yearCell)
 
-// function newTable() {
-//     bookList.innerHTML = ''
-//     makeTable()
-// }
+    let x = document.createElement('input')
+    x.setAttribute('type', 'checkbox')
+    if (element.read) x.setAttribute('checked', true)
+    x.className = 'tableCheck'
+    // x.addEventListener('click', () => {
+    //     toggleRead(objectIndex)
+    // })
+    row.insertCell().appendChild(x)
+
+    let cell = row.insertCell()
+    cell.className = 'cell-bin'
+    let image = document.createElement('img')
+    image.setAttribute('src', bin)
+    image.className = 'bin'
+    image.addEventListener('click', async () => {
+      await deleteTitle(element.id) 
+      newTable()
+    })
+    cell.appendChild(image)
+
+    // for (let key in element) {
+    //   console.log(key)
+    //   let cell = row.insertCell()
+    //   if (typeof(element[key]) === 'number') {
+        
+    //   } else if (typeof(element[key]) === 'boolean') {
+        
+    //   } 
+    //}
+  }
+}
+makeTable()
+
+function newTable() {
+    table.innerHTML = ''
+    makeTable()
+}
 
 function addBook() {
   const currUser = getUserId()
@@ -66,13 +76,14 @@ function addBook() {
   let book = {
       title: title.value,
       author: author.value,
-      year: year.value.toString(),
+      year: year.value,
       read: readCheck.checked,
+      id: Math.random()
   }
 
   saveTitle(book)
   loadLibrary()
-  //newTable()
+  newTable()
 }
 
 readCheck.addEventListener('click', () => {
@@ -108,5 +119,4 @@ add.addEventListener('click', () => {
   addBook();
 })
 
-loadLibrary()
 document.body.appendChild(login())
