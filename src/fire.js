@@ -11,8 +11,11 @@ import {
   addDoc,
   doc,
   deleteDoc,
+  getDoc,
   getDocs,
   serverTimestamp,
+  update,
+  updateDoc,
 } from 'firebase/firestore'
 
 const config = {
@@ -23,6 +26,11 @@ const config = {
   messagingSenderId: "583745297966",
   appId: "1:583745297966:web:54f739030db1bd213f49bf"
 };
+
+
+// Initialize Firebase
+initializeApp(config);
+const db = getFirestore();
 
 async function signIn() {
   console.log('signin')
@@ -46,7 +54,6 @@ function getUserId() {
 
 async function loadLibrary() {
   let library = []
-  let db = getFirestore();
   let loadLibrary = await getDocs(collection(db, "testercollection"));
   loadLibrary.forEach((doc) => {
     let book = doc.data()
@@ -58,7 +65,7 @@ async function loadLibrary() {
 
 async function saveTitle(obj) {
   try {
-    await addDoc(collection(getFirestore(), 'testercollection'), {
+    await addDoc(collection(db, 'testercollection'), {
       title: obj.title,
       author: obj.author,
       year: obj.year,
@@ -72,11 +79,20 @@ async function saveTitle(obj) {
 }
 
 async function deleteTitle(id) {
-  await deleteDoc(doc(getFirestore(), 'testercollection', id))
+  await deleteDoc(doc(db, 'testercollection', id))
 }
 
-// Initialize Firebase
-initializeApp(config);
+// https://firebase.google.com/docs/reference/js/firestore_
+// https://cloud.google.com/firestore/docs/samples/firestore-data-set-field
+// https://stackoverflow.com/questions/64137241/toggle-boolean-value-in-firestore-with-react-app
+async function toggleRead(id) {
+  // const bookRef = db.collection('testercollection').doc(id)
+  // const res = await bookRef.update({read: false})
+
+  // https://firebase.google.com/docs/firestore/manage-data/add-data
+  let book = doc(db, 'testercollection', id)
+  console.log(book.data())
+}
 
 export {
   signIn,
@@ -84,5 +100,6 @@ export {
   getUserId,
   loadLibrary,
   saveTitle,
-  deleteTitle
+  deleteTitle,
+  toggleRead
 }

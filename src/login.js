@@ -1,7 +1,7 @@
 import {
   signIn,
   signOutUser
-} from './app'
+} from './fire'
 
 function login () {
   const menu = document.createElement('div')

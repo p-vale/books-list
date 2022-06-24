@@ -5,7 +5,8 @@ import {
   getUserId, 
   loadLibrary, 
   saveTitle,
-  deleteTitle } from './app'
+  deleteTitle,
+  toggleRead } from './fire'
 
 let table = document.getElementById('bookList')
 let title = document.getElementById('title')
@@ -36,9 +37,10 @@ async function makeTable () {
     x.setAttribute('type', 'checkbox')
     if (element.read) x.setAttribute('checked', true)
     x.className = 'tableCheck'
-    // x.addEventListener('click', () => {
-    //     toggleRead(objectIndex)
-    // })
+    x.addEventListener('click', async () => {
+      await toggleRead(element.id)
+      newTable()
+    })
     row.insertCell().appendChild(x)
 
     let cell = row.insertCell()
@@ -51,16 +53,6 @@ async function makeTable () {
       newTable()
     })
     cell.appendChild(image)
-
-    // for (let key in element) {
-    //   console.log(key)
-    //   let cell = row.insertCell()
-    //   if (typeof(element[key]) === 'number') {
-        
-    //   } else if (typeof(element[key]) === 'boolean') {
-        
-    //   } 
-    //}
   }
 }
 makeTable()
@@ -72,13 +64,11 @@ function newTable() {
 
 function addBook() {
   const currUser = getUserId()
-  console.log(currUser)
   let book = {
-      title: title.value,
-      author: author.value,
+      title: title.value.toString(),
+      author: author.value.toString(),
       year: year.value,
-      read: readCheck.checked,
-      id: Math.random()
+      read: readCheck.checked
   }
 
   saveTitle(book)

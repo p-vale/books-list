@@ -4,7 +4,7 @@ module.exports = {
   mode: 'development',
   entry: [
     './src/script.js', 
-    './src/app.js'
+    './src/fire.js'
   ],
   output: {
     filename: 'bundle.js',
