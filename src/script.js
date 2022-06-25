@@ -1,24 +1,22 @@
 import bin from "./bin.png"
-import login from "./login"
+import makeMenu from "./menu"
+import feedback from "./feedback"
 import './style.css'
 import { 
-  getUserId, 
+  isUserSignedIn, 
   loadLibrary, 
   saveTitle,
   deleteTitle,
   toggleRead } from './fire'
 
-let table = document.getElementById('bookList')
-let title = document.getElementById('title')
-let author = document.getElementById('author')
-let year = document.getElementById('year')
-let readCheck = document.getElementById('read-check')
-let readLabel = document.getElementById('read-label')
-let add = document.getElementById('add-btn')
+const table = document.getElementById('bookList')
+const title = document.getElementById('title')
+const author = document.getElementById('author')
+const year = document.getElementById('year')
+const readCheck = document.getElementById('read-check')
+const readLabel = document.getElementById('read-label')
+const add = document.getElementById('add-btn')
 
-// function toggleRead(objIndex) {
-//     myLibrary[objIndex].read = !myLibrary[objIndex].read
-// }
 async function makeTable () {
   const data = await loadLibrary()
   for (let element of data) {
@@ -38,13 +36,12 @@ async function makeTable () {
     if (element.read) x.setAttribute('checked', true)
     x.className = 'tableCheck'
     x.addEventListener('click', async () => {
-      await toggleRead(element.id)
+      await toggleRead(element.id, x.checked)
       newTable()
     })
     row.insertCell().appendChild(x)
 
     let cell = row.insertCell()
-    cell.className = 'cell-bin'
     let image = document.createElement('img')
     image.setAttribute('src', bin)
     image.className = 'bin'
@@ -55,7 +52,6 @@ async function makeTable () {
     cell.appendChild(image)
   }
 }
-makeTable()
 
 function newTable() {
     table.innerHTML = ''
@@ -63,7 +59,6 @@ function newTable() {
 }
 
 function addBook() {
-  const currUser = getUserId()
   let book = {
       title: title.value.toString(),
       author: author.value.toString(),
@@ -83,6 +78,13 @@ readCheck.addEventListener('click', () => {
 })
 
 add.addEventListener('click', () => {
+  console.log(isUserSignedIn())
+  
+  if (!isUserSignedIn()) {
+  feedback()
+  return
+  }
+
   const titleNotOk = title.validity.valueMissing
   const authorNotOk = author.validity.valueMissing
   const dateFuture = year.validity.rangeOverflow
@@ -105,8 +107,10 @@ add.addEventListener('click', () => {
   if (titleNotOk || authorNotOk || dateFuture || dateOld) {
       return
   }
-  
-  addBook();
+
+  addBook()
 })
 
-document.body.appendChild(login())
+document.body.appendChild(makeMenu())
+
+export default newTable // to menu

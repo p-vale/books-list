@@ -10,12 +10,10 @@ import {
   collection,
   addDoc,
   doc,
+  updateDoc,
   deleteDoc,
-  getDoc,
   getDocs,
   serverTimestamp,
-  update,
-  updateDoc,
 } from 'firebase/firestore'
 
 const config = {
@@ -27,20 +25,29 @@ const config = {
   appId: "1:583745297966:web:54f739030db1bd213f49bf"
 };
 
+const mainTitle = document.getElementById('main-title')
 
 // Initialize Firebase
-initializeApp(config);
-const db = getFirestore();
+const app = initializeApp(config);
+const db = getFirestore(app);
 
 async function signIn() {
-  console.log('signin')
   var provider = new GoogleAuthProvider();
   await signInWithPopup(getAuth(), provider);
+  mainTitle.innerHTML = `${getUserName()}'s book list`
 }
 
 function signOutUser() {
-  console.log('signout')
   signOut(getAuth());
+  mainTitle.innerHTML = 'book list'
+}
+
+function isUserSignedIn() {
+  return !!getAuth().currentUser;
+}
+
+function getUserName() {
+  return getAuth().currentUser.displayName;
 }
 
 function getUserId() {
@@ -54,7 +61,7 @@ function getUserId() {
 
 async function loadLibrary() {
   let library = []
-  let loadLibrary = await getDocs(collection(db, "testercollection"));
+  let loadLibrary = await getDocs(collection(db, getUserId()));
   loadLibrary.forEach((doc) => {
     let book = doc.data()
     book.id = doc.id
@@ -65,7 +72,7 @@ async function loadLibrary() {
 
 async function saveTitle(obj) {
   try {
-    await addDoc(collection(db, 'testercollection'), {
+    await addDoc(collection(db, getUserId()), {
       title: obj.title,
       author: obj.author,
       year: obj.year,
@@ -79,25 +86,19 @@ async function saveTitle(obj) {
 }
 
 async function deleteTitle(id) {
-  await deleteDoc(doc(db, 'testercollection', id))
+  await deleteDoc(doc(db, getUserId(), id))
 }
 
-// https://firebase.google.com/docs/reference/js/firestore_
-// https://cloud.google.com/firestore/docs/samples/firestore-data-set-field
-// https://stackoverflow.com/questions/64137241/toggle-boolean-value-in-firestore-with-react-app
-async function toggleRead(id) {
-  // const bookRef = db.collection('testercollection').doc(id)
-  // const res = await bookRef.update({read: false})
-
-  // https://firebase.google.com/docs/firestore/manage-data/add-data
-  let book = doc(db, 'testercollection', id)
-  console.log(book.data())
+async function toggleRead(id, bool) {
+  let book = doc(db, getUserId(), id)
+  await updateDoc(book, {read: bool})
 }
 
 export {
   signIn,
   signOutUser,
-  getUserId,
+  getUserName,
+  isUserSignedIn,
   loadLibrary,
   saveTitle,
   deleteTitle,

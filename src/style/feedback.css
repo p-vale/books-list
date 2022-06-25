@@ -1,0 +1,18 @@
+#feedback-box {
+  background-color: #2cb8ab;
+  border: 1px solid #2cb8ab;
+  color: white;
+  padding: 10px;
+}
+
+#feedback-close {
+  position: relative;
+  float: right;
+  cursor: pointer;
+  font-size: 10px;
+}
+
+#feedback-info {
+  max-width: 250px;
+  margin-top: 10px;
+}

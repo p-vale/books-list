@@ -1,0 +1,117 @@
+#outputs {
+  width: 80vw;
+  margin: 5%;
+  overflow-x: hidden;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+#outputs::-webkit-scrollbar {
+  display: none;
+}
+
+#main-title {
+  color: #2cb8ab;
+  font-family: 'Palanquin', sans-serif;
+  /* text-transform: uppercase; */
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+table {
+  table-layout: fixed;
+  border-collapse: collapse;
+  font-family: 'Palanquin', sans-serif;
+  letter-spacing: 0.05em;
+  width: 100%;
+}
+
+.forty {
+ width: 40%;
+}
+.twenty {
+  width: 20%;
+}
+
+th {
+  padding: 10px;
+  text-align: left;
+  background-color: #de8b68;
+  color: white;
+  font-weight: 500;
+  text-transform: uppercase;
+  font-size: 18px;
+  position: sticky;
+  top: 0;
+}
+
+tr {
+  font-weight: 300;
+  font-size: 16px;
+  min-width: 50%;
+}
+
+tbody>*>* {
+  padding-left: 10px;
+}
+
+tr:nth-child(even) {
+  background-color: #eeeae2;
+}
+
+.tableCheck {
+  height: 15px;
+  width: 15px;
+  background-color: white;
+  border-radius: 50%;
+  border: 1px solid #e4bfaf;
+  appearance: none;
+  -webkit-appearance: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.tableCheck:checked {
+  background-color: #de8b68;
+  border-color: #de8b68;
+}
+
+.bin {
+  height: 25px;
+  width: 25px;
+  margin-top: 8px;
+  opacity: 0;
+}
+
+.bin:hover {
+  opacity: 100;
+}
+
+@media (max-width: 1200px) {
+  #outputs {
+    width: 85vw;
+    margin: 3%;
+  }
+}
+
+@media (max-width: 1000px) {
+  #outputs {
+    width: auto;
+    margin: 5%;
+    overflow-x: visible;
+    -ms-overflow-style: auto;
+  }
+
+  th {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 500px) {
+  th {
+    font-size: 10px;
+  }
+
+  .bin {
+    opacity: 0.5;
+  }
+}

@@ -1,0 +1,47 @@
+#modal {
+  z-index: 2;
+  position: fixed; 
+  width: 100vw; 
+  height: 100vh; 
+  top: 0; 
+  left: 0; 
+  display: flex; 
+  align-items: center; 
+  justify-content: center;
+  background-color: white;
+}
+
+#modal-info {
+  max-width: 500px;
+  width: 40vw;
+  padding: 4em;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+  font-family: 'Palanquin', sans-serif;
+  letter-spacing: .1rem;
+  line-height: 200%;
+  box-shadow: 0px 0px 8px #ecdad2;
+}
+
+#credits {
+  font-weight: 300;
+  margin-top: 20px;
+}
+
+#profile {
+  text-decoration: none;
+  color: #2cb8ab;
+}
+
+#close {
+  width: 20px;
+  margin-top: -20px;
+  margin-right: -20px;
+  align-self: flex-end;
+  background-color: #de8b68;
+  color: white;
+  font-size: 12px;
+  cursor: pointer;
+}
