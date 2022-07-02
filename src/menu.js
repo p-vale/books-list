@@ -20,13 +20,13 @@ function makeMenu () {
   enterBtn.className = 'menu-btn'
   enterBtn.innerHTML = 'Log In'
   enterBtn.addEventListener('click', async () => {
-    if (enterBtn.innerHTML === 'LOGIN') {
+    if (enterBtn.innerHTML === 'Log In') {
       enterBtn.innerHTML = 'Log Out'
       await signIn()
       newTable()
     } else {
       enterBtn.innerHTML = 'Log In'
-      signOutUser()
+      await signOutUser()
       newTable()
     }
   })
