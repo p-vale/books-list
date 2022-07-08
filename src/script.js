@@ -78,8 +78,6 @@ readCheck.addEventListener('click', () => {
 })
 
 add.addEventListener('click', () => {
-  console.log(isUserSignedIn())
-  
   if (!isUserSignedIn()) {
   feedback()
   return
