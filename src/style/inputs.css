@@ -67,7 +67,7 @@ input:focus {
 #read-label {
   margin: 0; /* remove label margin */
   width: 75px;
-  height: 30px;
+  height: 32px;
   line-height: 30px;
   position: absolute;
   right: 0;
@@ -98,7 +98,7 @@ input:focus {
   height: 100%;
   /* border-radius: 14px; */
   z-index: 1;
-  margin-left: 75px; /* make toggle easy-peasy */
+  margin-left: 74px; /* make toggle easy-peasy */
 }
 
 #read-check:checked ~ #read-indicator {
